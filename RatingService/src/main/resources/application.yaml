@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: RatingService
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/microservice
+    username: postgres
+    password: Nitya@2004
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+
+  sql:
+    init:
+      mode: always
+
+  config:
+    import: optional:configserver:http://localhost:8085
+
+server:
+  port: 8083
