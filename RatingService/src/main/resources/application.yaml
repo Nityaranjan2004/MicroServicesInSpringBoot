@@ -21,5 +21,15 @@ spring:
   config:
     import: optional:configserver:http://localhost:8085
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://integrator-6727445.okta.com/oauth2/default
 server:
   port: 8083
+
+okta:
+  oauth2:
+    issuer-uri: https://integrator-6727445.okta.com/oauth2/default
+    audience: api://default

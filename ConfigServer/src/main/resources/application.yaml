@@ -11,3 +11,8 @@ spring:
 
 server:
   port: 8085
+
+okta:
+  oauth2:
+    issuer-uri: https://integrator-6727445.okta.com/oauth2/default
+    audience: api://default

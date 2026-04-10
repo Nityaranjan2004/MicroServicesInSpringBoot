@@ -30,9 +30,9 @@ public class UserController {
 
     int retryCount=1;
     @GetMapping("/{userId}")
-//    @CircuitBreaker(name="ratingHotelBreaker",fallbackMethod = "ratingHotelFallBack")
+ //   @CircuitBreaker(name="ratingHotelBreaker",fallbackMethod = "ratingHotelFallBack")
 //      @Retry(name = "ratingHotelService",fallbackMethod = "ratingHotelFallBack")
-    @RateLimiter(name = "userRatelimitter",fallbackMethod = "ratingHotelFallBack")
+   // @RateLimiter(name = "userRatelimitter",fallbackMethod = "ratingHotelFallBack")
     public ResponseEntity<User> getSingelUser(@PathVariable String userId){
         log.info("retry Count:{}",retryCount);
         retryCount++;
@@ -42,6 +42,7 @@ public class UserController {
     public ResponseEntity<User> ratingHotelFallBack(String userId,Exception ex){     //ratingHotelFallBack return type = getSingelUser returntype
         //log.info("Fallback is executed because service is down:",ex.getMessage());
 
+        ex.printStackTrace();
         User user = User.builder()
                 .email("asd@gmail.com")
                 .name("dummy")
